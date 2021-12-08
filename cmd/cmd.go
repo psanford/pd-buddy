@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -38,5 +39,15 @@ func client() *pagerduty.Client {
 		panic(err)
 	}
 
-	return pagerduty.NewClient(conf.Authtoken)
+	pd := pagerduty.NewClient(conf.Authtoken)
+
+	return pd
+}
+
+func confirm(prompt string) bool {
+	fmt.Print(prompt)
+	var result string
+	fmt.Scanln(&result)
+
+	return result == "y" || result == "Y" || result == "yes" || result == "Yes"
 }
