@@ -19,6 +19,7 @@ var rootCmd = &cobra.Command{
 func Execute() error {
 
 	rootCmd.AddCommand(incidentCmd())
+	rootCmd.AddCommand(scheduleCmd())
 
 	return rootCmd.Execute()
 }
